@@ -14,7 +14,7 @@ abstract class ReflectionForm {
 		foreach ( $this->metadataFields as $fieldName => $fieldParams ) {
 			
 			$generated .= "<div>" . ucfirst ( $fieldName ) . "</div>\n";
-			$generated .= "<div><input type=\"" . @$fieldParams ['type'] . "\" name=\"" . $fieldName . "\" /></div>\n";
+			$generated .= "<div><input type=\"" . $fieldParams ['type'] . "\" name=\"" . $fieldName . "\" /></div>\n";
 		}
 		
 		return $generated;
@@ -32,7 +32,7 @@ abstract class ReflectionForm {
 			if (preg_match ( '#^/\*\*(.*)\*/#s', $doc, $comment ) === false)
 				throw new Exception ( 'Error parsing docbloc' );
 			
-			$params = @trim ( $comment [1] );
+			$params = trim ( $comment [1] );
 			
 			if (preg_match_all ( '#^\s*\*(.*)#m', $params, $lines ) === false)
 				throw new Exception ( 'Error parsing docbloc 2' );
